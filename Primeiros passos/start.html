@@ -10,7 +10,12 @@
         <div id="start">
             <h1>{{message}}</h1>
         </div>
-        <script src="vue.js"></script>
+        <!-- <script src="vue.js"></script> Versão mais antiga -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>Versão com CDN -->
+        <!-- Vimos como baixar Vue pelo NPM e pelo YARN todos são com o mesmo SCRIPT igual abaixo -->
+        <script src="node_modules/vue/dist/vue.min.js"></script>
+
+
         <script>
             //Declaro a variavel app para poder usar no navegador
             let app = new Vue({
