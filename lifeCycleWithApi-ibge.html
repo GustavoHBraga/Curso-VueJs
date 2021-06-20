@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ciclo de vida junto com a API</title>
+    </head>
+    <body>
+        <div id="lifeCycle">
+
+           <h1>{{ name }}</h1>
+
+           <ul>
+               <li v-for="state in states">{{ state.nome }}</li>
+           </ul>
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+        
+        <script>
+            let app = new Vue({
+                el:'#lifeCycle',
+                data:{
+                    name: 'Gustavo Software',
+                    states: []
+                },
+                beforeCreate(){
+                    console.log('beforeCreate');
+                },
+                created(){
+                    fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados')//api que retorna objetos com dados dos estados
+                    .then(response=> {
+                        response.json().then(data =>{//pego os dados via response e transformo eles em .json()
+                            this.states = data;//por fim adiciono os dados no meu array states.
+                        })
+                    }).catch(err =>{
+                        console.log(err);
+                    })
+                },
+                beforeMount(){
+                    console.log('beforeMount');
+                },
+                mounted(){
+                    console.log('mounted');
+                },
+                beforeUpdate(){
+                    console.log('beforeUpdate');
+                },
+                updated(){
+                    console.log('updated');
+                },
+                beforeDestroy(){
+                    console.log('beforeDestroy');
+                },
+                destroyed(){
+                    console.log('destroyed');
+                }
+            })
+        </script>
+    </body>
+</html>
