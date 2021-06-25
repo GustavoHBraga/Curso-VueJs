@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diretivas:v-bind</title>
+</head>
+
+<body>
+    <div id="directives">
+
+        <a v-bind:href="url">Youtube</a>
+
+        <p :[arg]="value">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus nihil alias ab corporis ducimus? Impedit inventore cupiditate, ipsa, facilis mollitia iste, atque quaerat soluta commodi corrupti quae quis quasi minima?</p>
+
+        
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+
+    <script>
+        let app = new Vue({
+            el: '#directives',
+            
+            data: {
+                url : 'https://www.youtube.com',
+                arg:'title',
+                value:'Exemplo da aula diretiva'
+            }
+        })
+    </script>
+</body>
+
+</html>

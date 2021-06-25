@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diretivas:v-for</title>
+</head>
+
+<body>
+    <div id="directives">
+
+        <h2>Cidades do mundo </h2>
+        <ol>
+            <!--<li v-for="city in cities">{{city}}</li>    exemplo Array-->
+            <li v-for="item in cities">
+                {{item.city}} - {{item.country}}
+            </li>
+
+        </ol>
+
+        <h2>Lista de melhores filmes</h2>
+        <ul>
+            <li v-for="(picture, index) in movies">
+                {{index +1}} - {{picture}}
+            </li>
+        </ul>
+
+        <h2>Lista de empresas</h2>
+        <p v-for="(value, key, index) in company">{{key}}: {{value}}</p>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+
+    <script>
+        let app = new Vue({
+            el: '#directives',
+            
+            data: {
+                //cities:['São Paulo', 'Nova York','Las Vegas','Rio de Janeiro'], - Array
+
+                cities:[{
+                    city:'Londres',
+                    country: 'United kingdom'
+                },{
+                    city:'São Paulo',
+                    country: 'Brasil'
+                },{
+                    city:'New York',
+                    country: 'EUA'
+                },{
+                    city:'Bogotá',
+                    country: 'Argentina'
+                },{
+                    city:'Madrid',
+                    country: 'Espanha'
+                },{
+                    city:'Jerusalem',
+                    country: 'Israel'
+                }],
+
+                movies:['De volta para o futuro','Senhor dos aneis','Vingadores','Stars Wars'],
+                
+                company:[{
+                    name: 'Facebook',
+                    year: 2004,
+                    creator: 'Mark'
+                },{
+                    name: 'SoftwareByBraga',
+                    year: 2021,
+                    creator: 'Gustavo Braga'
+                }]
+            },
+        })
+    </script>
+</body>
+
+</html>

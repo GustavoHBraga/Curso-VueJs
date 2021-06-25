@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diretivas: v-text</title>
+</head>
+
+<body>
+    <div id="directives">
+
+        <h4>{{name}}</h4>
+        <h4 v-text="name"></h4>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+
+    <script>
+        let app = new Vue({
+            el: '#directives',
+            
+            data: {
+
+                name:'Gustavo Braga'
+                
+            },
+        })
+    </script>
+</body>
+
+</html>

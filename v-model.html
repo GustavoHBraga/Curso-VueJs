@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diretivas:v-model</title>
+</head>
+
+<body>
+    <div id="directives">
+
+        <h3 v-bind:style="{ fontSize: textSize + 'px'}">Hcode</h3>
+
+        <input type="number" placeholder="Digite o tamanho da fonte" v-model="textSize">
+        
+        <h3 v-bind:style="{ color: textColor }" >Deus estejá com você</h3>
+
+        <label>Escolha sua Cor de texto</label>
+        <input type="color" v-model="textColor">
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+
+    <script>
+        let app = new Vue({
+            el: '#directives',
+            
+            data: {
+                textSize:10,
+                textColor:'blue'
+            }
+        })
+    </script>
+</body>
+
+</html>
