@@ -1,0 +1,32 @@
+//Essa condição primeiro verifica para depois executar
+var i = 0
+while(i < 5){
+	
+	console.log('Ola = ' + i);
+	i++;
+}
+
+// essa condição primeiro executa para depois verificar a codição pelo menos 1 vez
+var x = 0;
+do{
+	console.log('Ok = ' + x)
+}while(x > 1)
+
+// For tradicional
+for (var i = 0; i <= 10; i++) {
+	console.log(i + ' - Tudo ok');
+}	
+
+// Declarar um objeto 
+var person = [{
+	nome:'Jon',
+	sobrenome:'Snow'
+},{
+	nome:'Maluno',
+	sobrenome:'Vazz'
+}];
+
+//For in
+for(var prob in person){
+	console.log(person[prob]);
+}
