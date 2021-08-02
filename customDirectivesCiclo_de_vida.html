@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Custom_directives cicle life</title>
+    </head>
+    <body>
+        <div id="app">
+            <h1 v-upper>{{name}}</h1>
+            <h2 v-capitalize>{{frase}}</h2>
+            <h3 v-custom:[argument]="distance">{{name}}</h3>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+        <script>
+            Vue.directive('upper',{
+                inserted(element){
+                    element.innerText = element.innerText.toUpperCase();
+                }
+            })
+
+            //alterar de forma logica o deslocamento do elemento
+            function setDirection(element, binding){
+
+                element.style.margin = 0;
+
+                let direction = binding.arg.toLowerCase();
+                let value = binding.value;
+                
+                switch(direction){
+                    case'left':
+                    case'right':
+                    case'bottom':
+                    case'top':
+                        let newDirection = direction.charAt(0).toUpperCase() +
+                        direction.slice(1);
+
+                        eval(`element.style.margin${newDirection} = value + 'px'`);
+                        break;
+
+                    default:
+                        console.error('Direção invalida....');
+                }
+
+            }
+
+
+            let app = new Vue({
+
+                el:'#app',
+                data:{
+                    name: 'Gustavo',
+                    frase: 'ola tudo bem',
+                    argument:'left',
+                    distance:300
+
+                },
+                directives:{
+                    /*funções para diretivas 
+                    capitalize:{
+                        bind(element){
+
+                           console.log('Bind - Fui vinculado a um elemento');
+                        },
+                        inserted(element){
+                            console.log('Inserted - Fui inserido a pagina');
+                            let words = element.innerText.split(' ');
+                            words.forEach((text, index) =>{
+                                words[index] = text.charAt(0).toUpperCase() + text.slice(1);
+                            });
+
+                            element.innerText = words.join(' ');
+                        },
+                        update(element){
+                            console.log('Update - elemento foi atualizado');
+                        },
+                        unbind(element){
+                            console.log('Unbind - elemento foi desvinculado');
+                        },
+                        componentUpdated(element){
+                            console.log('ComponentUpdate - Elemento componente foi atualizado');
+                        }
+                    },*/
+                    /*Parametros que a diretiva aceita
+                    custom:{
+
+                        inserted(element,binding){
+                            console.log(binding);
+                            element.style.color = 'red';
+                        },
+                        update(element,binding, vnode, oldvnode){
+                            console.log(vnode,oldvnode);
+                            element.style.textDecoration = 'underline';
+
+                        }
+                    }*/
+                    custom:{
+                        inserted(element,binding){
+                            setDirection(element,binding);
+                        },
+                        update(element,binding, vnode, oldvnode){
+                            setDirection(element,binding);
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

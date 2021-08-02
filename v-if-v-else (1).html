@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diretivas: v-if</title>
+</head>
+
+<body>
+    <div id="directives">
+
+        <h1  key="Sucess" v-if="show">Seja Bem vindo</h1>
+        <h1  key="invalid" v-else  >Infelizmente o show acabou !!</h1>
+
+        <h2>Total de ingressos = {{tickets}}</h2>
+
+        <h2 key="available" v-if="tickets >= 50">Muitos ingressos á venda</h2>
+        <h2 key="almost" v-else-if="tickets >= 1">Está quase acabando os ingressos</h2>
+        <h2 key="empty" v-else style="color: red;">Esgotou todos os ingressos</h2>
+
+        <br>
+        <p v-if="message"> <strong>Messagem:</strong> {{message}}</p>
+        <label >Ticket:</label>
+        <input type="number" min="1" step="1" v-on:blur="buyTickets($event.target.value)" 
+            placeholder="Quantidade para compra">
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+
+    <script>
+        let app = new Vue({
+            el: '#directives',
+            
+            data: {
+
+                show: true,
+                tickets: 100,
+                message: ''
+            },
+            methods:{
+
+                buyTickets:function(value){
+
+                    if(value <= this.tickets && value > 0){
+                        
+                        this.tickets = this.tickets - value;
+                        this.message = 'Compra realizada com sucesso !!!' ;
+
+                    }else{
+                        this.message = 'Impossivel realizar a compra !!!';
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
